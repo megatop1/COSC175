@@ -1,0 +1,14 @@
+#include<iostream>
+#include<string>
+#include<iomanip>
+using namespace std; 
+
+int main() {
+	double num = 123.4567899;
+
+	cout << fixed << setprecision(2) << endl;
+	cout << num << endl; 
+
+	system("pause"); 
+	return 0;
+}
