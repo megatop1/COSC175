@@ -1,0 +1,30 @@
+#include<iostream>
+#include<string>
+using namespace std;
+
+void sort(int& userInput1, int& userInput2);
+
+int main() {
+	int userInput1 = 0, userInput2 = 0, userInput3 = 0;
+
+	//add processing steps here and print out final order
+	cout << "Enter 3 integers seperated by a space: ";
+	cin >> userInput1 >> userInput2 >> userInput3;
+
+	sort(userInput1, userInput3);
+	sort(userInput1, userInput2);
+	sort(userInput2, userInput3);
+
+	cout << "Sorted order: " << userInput1 << " " << userInput2 << " " << userInput3 << endl;
+
+	system("pause");
+	return 0;
+}
+
+void sort(int& userInput1, int& userInput2) { //void function because we are not returning anything
+	if (userInput1 > userInput2) {
+		int temp = userInput1; //makes temporary varaible that puts userinput 1 inside of temp varialble 
+		userInput1 = userInput2; //swap code
+		userInput2 = temp; 
+	}
+}
