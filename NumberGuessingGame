@@ -1,0 +1,66 @@
+/* Question 2: Write a complete working program that plays a number guessing game.
+1.	The program should first generate a random number in the range of 1 – 100 and display a message saying that I have a number, can you guess it?
+2.	Next, the program should REPEATEDLY prompt the user for a guess (“Please enter a guess: ”)
+3.	Each time the user enters a number, the program should look at the user guess and respond
+appropriately with one of the following messages:
+a.	“Correct, you win!”
+b.	“Too High”
+c.	“Too low”
+4.	When the user guesses correctly, the program should display a ‘goodbye’ message telling the user how many guesses it took to win the game and then terminate.
+5.	The ONLY code in the main() function should be a call to playGame().
+6.	The playGame() method should:
+a.	declare ALL of the variables needed to play the game and report the outcomes.
+b.	Call another method named getRandomNumber(int& number) to set the secret number.
+c.	Create a game loop that:
+i.	ends when a users guess matches the secret number.
+ii.	calls a method named getUserGuess for each new guess (x2)
+iii.	passes the user guess and the secret number to a method called evaluateGuess that compares the user input and returns the correct output message.
+7.	Print the goodbye message. */
+#include<iostream>
+#include<string>
+#include<iomanip>
+#include<cmath>
+#include<climits>
+#include<cstdlib>
+#include<fstream>
+#include<ctime>
+using namespace std;
+
+void playGame();
+void getRandomNumber(int& number);
+
+int main() {
+	playGame();
+
+	system("pause");
+	return 0;
+}
+
+void playGame() {
+	int secretNumber = 0;
+	getRandomNumber(secretNumber);
+	int userGuess = 0, numberOfGuesses = 0;
+	cout << "I have a secret number; can you guess it?" << endl << endl;
+
+	do {
+		cout << "Enter your guess: ";
+		cin >> userGuess;
+		if (userGuess > secretNumber) {
+			cout << "TOO High!" << endl;
+		}
+		else if(userGuess < secretNumber) {
+			cout << "TOO Low!" << endl;
+		}
+		else cout << "Correct, you win!";
+
+
+		numberOfGuesses++; //increment number of guesses so it adds 1 each time its wrong
+	} while (userGuess != secretNumber);
+	cout << "Goodbye: It took you " << numberOfGuesses << "To guess the answer" << endl << endl;
+}
+
+void getRandomNumber(int& number) {
+	srand((unsigned int)time(0)); //seeds random number generator setting to time 0 ensures u dont get same numbers each time 
+	number = rand() % (100) + 1;  //set varaible secretnumber to equal to random function, inside random function its high - low % 10 + 1
+	cout << "secret = " << number;
+}
