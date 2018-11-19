@@ -1,0 +1,37 @@
+/* Tip Program:
+9/10/2018 by rj pisciotta 
+inputs: total bill, liquor charge, tip percent
+output: tip 
+algorithm: prompt user for inputs
+		   calculate total bill without liquor charge (TBWL)
+		   calculate tip based on tip percent TBWL 
+		   output the tip
+*/
+
+#include<iostream> //ability to hook up information
+using namespace std; //for all libraries look in the standard libraries to find them
+
+int main() { //every program starts with a main function 
+	double totalCharge = 0.0; //these are all our variables with a inital delcared value of zero in order to prevent program from crashing when running it 
+	double liquorCharge = 0.0;
+	double totalWithoutLiquor = 0.0;
+	double tipPercent = 0.0;
+	double tip = 0.0; 
+
+	cout << "Please enter the total bill: $";     //connects statements to the monitor
+	cin >> totalCharge; 
+
+	cout << "Please enter the liquor charge: $";     
+	cin >> liquorCharge;
+
+	cout << "Please enter the tip percentage: $";    
+	cin >> tipPercent;
+
+	totalWithoutLiquor = totalCharge - liquorCharge;
+	tip = totalWithoutLiquor * tipPercent;
+
+	cout << "the correct tip amount is: $" << tip << endl; 
+
+	system("pause");
+	return 0; 
+}
