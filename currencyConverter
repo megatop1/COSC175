@@ -1,0 +1,92 @@
+#include<iostream>
+#include<string>
+#include<iomanip>
+using namespace std;
+int main() {
+	double usDollar = 0.0;
+	double canadianDollar = 0.0;
+	double euros = 0.0;
+	double indianRupees = 0.0;
+	double japaneseYen = 0.0;
+	double mexicanPesos = 0.0;
+	char unResident = ' ';
+	int choice = 0;
+	cout << "Please enter 1 to convert canadian dollars to U.S. Dollars" << endl;
+	cout << "Please enter 2 to convert Euros to U.S. Dollars" << endl;
+	cout << "Please enter 3 to convert Indian Rupees to U.S. dollars" << endl;
+	cout << "Please enter 4 to convert Japanese Yen to U.S. Dollars" << endl;
+	cout << "Please enter 5 to convert Mexican Pesos to U.S. Dollars" << endl;
+	cout << "Please enter a number choice ";
+	cin >> choice;
+
+	cout << "Are you a  US Resident " << unResident << "? (Y/N) --> ";
+	cin >> unResident;
+
+	if (choice == 1) {
+		cout << "Please enter the amount of Canadian Dollars you have ";
+		cin >> canadianDollar;
+
+		if (unResident == 'Y' || unResident == 'y') {
+			usDollar = canadianDollar / .9813;
+		}
+		else if (unResident == 'N' || unResident == 'n') {
+			usDollar = canadianDollar / 1.00;
+		}
+		cout << canadianDollar << " canadian dollars can be exchanged for $" << usDollar << " US dollars." << endl;
+	}
+	else if (choice == 2) {
+		cout << "Please enter the amount of Euros you have ";
+		cin >> euros;
+
+		if (unResident == 'Y' || unResident == 'y') {
+			usDollar = euros / .757;
+		}
+		else if (unResident == 'N' || unResident == 'n') {
+			usDollar = euros / .8;
+		}
+		cout << euros << " euros can be exchanged for $" << usDollar << " US dollars." << endl;
+	}
+	else if (choice == 3) {
+		cout << "Please enter the amount of Indian Rupees you have ";
+		cin >> indianRupees;
+		if (unResident == 'Y' || unResident == 'y') {
+			usDollar = indianRupees / 52.53;
+		}
+		else if (unResident == 'N' || unResident == 'n') {
+			usDollar = indianRupees / 55;
+		}
+		cout << indianRupees << " Indian Rupees can be exchanged for $" << usDollar << " US dollars." << endl;
+
+	}
+	else if (choice == 4) {
+		cout << "Please enter the amount of Japanese Yen you have ";
+		cin >> japaneseYen;
+		if (unResident == 'Y' || unResident == 'y') {
+			usDollar = japaneseYen / 80.92;
+		}
+		else if (unResident == 'N' || unResident == 'n') {
+			usDollar = japaneseYen / 85;
+		}
+		cout << japaneseYen << " Japanese Yen can be exchanged for $" << usDollar << " US dollars." << endl;
+
+	}
+	else if (choice == 5) {
+		cout << "Please enter the amount of Mexican Pesos you have ";
+		cin >> mexicanPesos;
+		if (unResident == 'Y' || unResident == 'y') {
+			usDollar = mexicanPesos / 13.15;
+		}
+		else if (unResident == 'N' || unResident == 'n') {
+			usDollar = mexicanPesos / 15;
+		}
+		cout << mexicanPesos << " Mexican Pesos can be exchanged for $" << usDollar << " US dollars." << endl;
+
+	}
+	else {
+		cout << "Invalid Choice, ending program" << endl;
+	}
+
+
+	system("pause");
+	return 0;
+}
