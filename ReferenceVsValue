@@ -1,0 +1,40 @@
+#include<iostream>
+#include<string>
+using namespace std;
+
+void askUser(int&, string&); //Pass by reference
+//askuUser - fill in score and name 
+//@param int& - the user's score
+//@param string& - the user's name
+
+void calculateOutcome(int, string); //pass by value
+//calculate outcome 
+//@param int- score of user 
+//@param string - name of user
+
+int main() {
+	int score = 0;
+	string name = "";
+	askUser(score, name);
+	calculateOutcome(score, name);
+	
+	system("pause");
+	return 0;
+}
+
+void askUser(int& newScore, string& newName) {
+	cout << "Please type in your name: " << endl;
+	cin >> newName;
+	cout << "Enter your score" << endl;
+	cin >> newScore;
+
+}
+
+void calculateOutcome(int newScore, string newName) {
+	if (newScore > 50) {
+		cout << "You did not fail!" << endl;
+	}
+	else {
+		cout << "You failed " << newName << endl;
+	}
+}
