@@ -1,0 +1,65 @@
+/* Write a complete program to input a series of test grades from a file named test.txt 
+and report the number of student grades, the number of AS, BS, CS, DS, and FS, the percent 
+below average (DS and FS) and the percent above average (AS and BS). 
+
+For the file  test.txt as follows:
+     Section-001
+     A  C  F  F  D  B  B  C  C  C  A  C  C  B  B  C  D
+     Section-005
+     C  F  F  D  B  F  C  C  C  A  C  A  B  B  A  D
+
+Output should be:
+     33 student grades
+     A: 5   B: 7   C: 12   D: 4   F: 5
+     Above average: 36.36%
+     Below average: 27.27%
+*/
+
+#include<iostream>
+#include<iomanip>
+#include<string>
+#include<fstream>
+using namespace std;
+int main() {
+
+    ofstream out;
+    out.open("test.txt");
+    out << "Section - 001" << endl;
+    out << "A  C  F  F  D  B  B  C  C  C  A  C  C  B  B  C  D" << endl;
+    out << "Section - 005" << endl;
+    out << "C  F  F  D  B  F  C  C  C  A  C  A  B  B  A  D" << endl;
+    out.close();
+
+    int a = 0, b = 0, c = 0, d = 0, f = 0;
+    string nextToken = "";
+
+    ifstream in;
+    in.open("test.txt");
+    while (!in.eof()) {
+        in >> nextToken;
+        if (nextToken == "A")
+            a++;
+        else if(nextToken == "B")
+            b++;
+        else if (nextToken == "C")
+            c++;
+        else if (nextToken == "D")
+            d++;
+        else if (nextToken == "F")
+            f++;
+    }
+    in.close();
+
+    cout << "There were " << a << " A(s)" << endl;
+    cout << "There were " << b << " B(s)" << endl;
+    cout << "There were " << c << " C(s)" << endl;
+    cout << "There were " << d << " D(s)" << endl;
+    cout << "There were " << f << " F(s)" << endl;
+    double total = a + b + c + d + f;
+    cout << ((a + b) / total) * 100 << " % were above average" << endl;
+    cout << ((d + f) / total) * 100 << " % were below average" << endl;
+
+    system("pause");
+    return 0;
+}
+
