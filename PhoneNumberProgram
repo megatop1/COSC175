@@ -1,0 +1,62 @@
+/*
+Write a complete program that receives a single phone number from the keyboard as a string and then passes it to a filter function
+(by reference).  The function should ERASE all non-numeric characters from the parameter string.  
+As a result, the original string variable should now contain numeric-only characters.  
+If the number of digits in the filtered phone number is not 7 or 10, an error message should print.  
+If the number of digits is 7, the number should print in the form:  xxx-xxxx
+If the number of digits is 10, the number should print in the form: (xxx) xxx-xxxx
+
+3 sample traces:
+     Enter a phone number:  717.774.4464
+     (717) 774-4464 
+     
+     Enter a phone number:  774  4464
+     774-4464
+
+     Enter a phone number:  4464
+     Not a valid phone number
+*/
+
+#include<iostream>
+#include<iomanip>
+#include<string>
+using namespace std;
+int main() {
+ string phoneNumber = "";
+ int subscript = 0;
+ //prompts user to enter phone number and uses getline function to recieve it
+ cout << "Please enter a phone number. Please enter in this format: 717.774.4464" << endl;
+ getline(cin, phoneNumber);
+ if (phoneNumber.length() > 12) {
+  cout << "Not a valid phone number" << endl;
+ } else
+  if (phoneNumber.length() < 7) {
+   cout << "Not a valid phone number" << endl;
+  }
+  else if (subscript < phoneNumber.length()) {
+   //removes any spaces or periods (.)
+   while (subscript < phoneNumber.length()) {
+    if (phoneNumber.substr(subscript, 1) == "." || phoneNumber.substr(subscript, 1) == " ") {
+     phoneNumber.erase(subscript, 1);
+    }
+    else {
+     subscript += 1;
+    }
+   }
+  if (phoneNumber.length() == 10) {
+   phoneNumber.insert(0, "(");  //inserts parenthesis for first three numbers of phone number
+   phoneNumber.insert(4, ")");
+   phoneNumber.insert(8, "-");
+   cout << phoneNumber << endl;
+  }
+  else if (phoneNumber.length() == 7) {
+   phoneNumber.insert(3, "-"); //inserts - after the third subscript
+  }
+  else {
+   cout << "Invalid phone number" << endl; //will print it phone number is not 10 or 7 digits after all the test have been performed
+  }
+ }
+ 
+ system("pause");
+ return 0;
+}
