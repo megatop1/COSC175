@@ -1,0 +1,85 @@
+/*
+(Arrays, Searching and Sorting)  Write a complete program that receives a series of student records from the keyboard 
+and stores them in three parallel arrays named studentID and courseNumber and grade.  All arrays are to be 100 elements.
+The studentID array is to be of type int and the courseNumber and grade arrays are to be of type string.
+
+The program should prompt for the number of records to be entered and then receive user input on how many records are to be entered.  
+That value should be used in an input loop to receive the series of records and store them in the parallel arrays.
+
+Add a function to printout all records stored in the array.  Only print records that were input from the keyboard.  
+Much of the arrays will be unused.  Add another function to search the arrays using a specific student ID and display the student’s ID, 
+course number, and grade wherever found, OR the message “<student ID> doesn’t exist in array”
+
+Add code in main to print all records and prompt a user to enter a student ID and search for it in the arrays.  
+Test both possible outcomes.
+
+Sample trace:
+
+Enter the number of records to be input: 6
+Enter record 1 (student ID, Course number and grade):  12 COSC175 A
+Enter record 2 (student ID, Course number and grade):  15 COSC175 B
+Enter record 3 (student ID, Course number and grade):  22 COSC175 C
+Enter record 4 (student ID, Course number and grade):  12 ENG317  A
+Enter record 5 (student ID, Course number and grade):  15 ENG317  A
+Enter record 6 (student ID, Course number and grade):  12 PSYC101 A
+
+Enter a student ID for a record search: 12
+12 COSC175 A
+12 ENG317 A
+12 PSYC101 A
+
+
+Note: If a search had been made for 17, the message “17 doesn’t exist in array” would have been displayed.
+
+*/
+
+#include<iostream>
+#include<iomanip>
+#include<string>
+#include<fstream>
+using namespace std;
+const int ARRAY_SIZE = 100;
+void print(int studentID[], string courseNumber[], string grade[], int count);
+void search(int studentID[], string courseNumber[], string grade[], int count, int ID);
+int main() {
+    int recordCount = 0;
+    int studentID[ARRAY_SIZE] = { 0 };
+    string courseNumber[ARRAY_SIZE] = { "" };
+    string grade[ARRAY_SIZE] = { "" };     
+
+
+cout << " How many records do you want to enter: ";
+    cin >> recordCount;
+
+    for (int i = 0; i < recordCount; i++) {
+        cout << "Enter record " << i + 1 << ": (studentID courseNumber grade): ";
+        cin >> studentID[i] >> courseNumber[i] >> grade[i];
+        /*cout << "Enter student ID (integer): ";
+        cin >> studentID[i];
+        cout << "Enter the course number: ";
+        cin >> courseNumber[i];
+        cout << "Enter the student grade: ";
+        cin >> grade[i];*/
+    }
+
+    print(studentID,courseNumber, grade,recordCount);
+    int searchID = 0;
+    cout << " What student ID do you want to search for? ";
+    cin >> searchID;
+    search(studentID, courseNumber, grade, recordCount, searchID);
+
+    system("pause");
+    return 0;
+}
+void print(int studentID[], string courseNumber[], string grade[], int count) {
+    for (int i = 0; i < count; i++) {
+        cout << studentID[i] << " " << courseNumber[i] << " " << grade[i] << endl;
+    }
+}
+void search(int studentID[], string courseNumber[], string grade[], int count, int ID) {
+    for (int i = 0; i < count; i++) {
+        if (studentID[i] == ID) {
+            cout << studentID[i] << " " << courseNumber[i] << " " << grade[i] << endl;
+        }
+    }
+}
